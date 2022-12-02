@@ -1,12 +1,12 @@
-import { exampleInput } from './inputs/day-1-input'
-import { calculateCalories, calculateTopThreeCalories } from './day1'
+import { part1, part2 } from './day1'
+import { day1Example } from './fixtures'
 
 describe('day1', () => {
   it('calculates the calories carried by the elf with the most calories', () => {
-    expect(calculateCalories(exampleInput)).toBe(24000)
+    expect(part1(day1Example)).toBe(24000)
   })
 
   it('calculates the calories from the top 3 elves', () => {
-    expect(calculateTopThreeCalories(exampleInput)).toBe(45000)
+    expect(part2(day1Example)).toBe(45000)
   })
 })
