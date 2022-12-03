@@ -1,65 +1,49 @@
-export const part1 = (input) => {
-  return input
+export const part1 = (input: string): string =>
+  input
     .split('\n')
-    .map((round) => round.split(' '))
-    .reduce(scoreReducer, 0)
-}
-
-export const part2 = (input) => {
-  return input
-    .split('\n')
-    .map((round) => round.split(' '))
-    .map(([opponent, player]) => {
-      const playerMove = {
-        A: {
-          X: 'Z',
-          Y: 'X',
-          Z: 'Y',
-        },
-        B: {
-          X: 'X',
-          Y: 'Y',
-          Z: 'Z',
-        },
-        C: {
-          X: 'Y',
-          Y: 'Z',
-          Z: 'X',
-        },
-      }[opponent][player]
-      return [opponent, playerMove]
+    .map((rucksack) => {
+      const middleIndex = rucksack.length / 2
+      return [rucksack.slice(0, middleIndex), rucksack.slice(middleIndex)]
     })
-    .reduce(scoreReducer, 0)
-}
+    .reduce((commonItems, [compartment1, compartment2]) => {
+      return [
+        ...commonItems,
+        ...compartment2.split('').reduce((commonItems, char) => {
+          if (compartment1.includes(char) && !commonItems.includes(char)) {
+            return [...commonItems, char]
+          }
+          return commonItems
+        }, []),
+      ]
+    }, [])
+    .reduce((total, char) => total + calculateValue(char), 0)
 
-const scoreReducer = (totalScore, [opponent, player]) => {
-  const shapeScore = {
-    X: 1,
-    Y: 2,
-    Z: 3,
-  }[player]
+export const part2 = (input: string): string =>
+  input
+    .split('\n')
+    .reduce((groups, backpack, index) => {
+      const group = Math.floor(index / 3)
 
-  const lose = 0
-  const draw = 3
-  const win = 6
+      if (!groups[group]) {
+        groups[group] = []
+      }
 
-  const playerOutcomeScore = {
-    A: {
-      X: draw,
-      Y: win,
-      Z: lose,
-    },
-    B: {
-      X: lose,
-      Y: draw,
-      Z: win,
-    },
-    C: {
-      X: win,
-      Y: lose,
-      Z: draw,
-    },
-  }[opponent][player]
+      groups[group] = [...groups[group], backpack]
+      return groups
+    }, [])
+    .reduce((total, group) => {
+      return (
+        total +
+        calculateValue(
+          group[0].split('').reduce((badgeChar, char) => {
+            if (group[1].includes(char) && group[2].includes(char)) {
+              return char
+            }
+            return badgeChar
+          })
+        )
+      )
+    }, 0)
 
-  return totalScore + shapeScore + playerOutcomeScore
-}
+const calculateValue = (char) =>
+  parseInt(char, 36) - 9 + (char === char.toUpperCase() ? 26 : 0)

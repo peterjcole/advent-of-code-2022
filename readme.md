@@ -16,6 +16,17 @@ then:
 advent-of-code-2022 day 1
 ```
 
+## Run tests with watcher
+```shell
+yarn watch
+```
+
+or
+
+```shell
+yarn watch day1
+```
+
 ## Generate code for a new day
 
 ```shell

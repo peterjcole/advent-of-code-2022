@@ -1,15 +1,22 @@
-import { part1, part2 } from './day2'
+import { part1, part2 } from './day3'
 
-export const day2Example = `A Y
-B X
-C Z`
+const day3Example = `vJrwpWtwJgWrhcsFMMfFFhFp
+jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL
+PmmdzqPrVvPwwTWBwg
+wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn
+ttgJtRGJQctTZtZT
+CrZsJsPPZsGzwwsLwLmpwMDw`
 
-describe('day2', () => {
-  it('calculates the calories carried by the elf with the most calories', () => {
-    expect(part1(day2Example)).toBe(15)
+const expectedPart1Result = 157
+
+const expectedPart2Result = 70
+
+describe('day3', () => {
+  it('works for part 1', () => {
+    expect(part1(day3Example)).toBe(expectedPart1Result)
   })
 
-  it('calculates the actual score', () => {
-    expect(part2(day2Example)).toBe(12)
+  it('works for part 2', () => {
+    expect(part2(day3Example)).toBe(expectedPart2Result)
   })
 })
