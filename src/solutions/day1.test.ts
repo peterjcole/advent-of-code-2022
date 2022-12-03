@@ -1,5 +1,19 @@
 import { part1, part2 } from './day1'
-import { day1Example } from './fixtures'
+
+export const day1Example = `1000
+2000
+3000
+
+4000
+
+5000
+6000
+
+7000
+8000
+9000
+
+10000`
 
 describe('day1', () => {
   it('calculates the calories carried by the elf with the most calories', () => {
