@@ -14,14 +14,14 @@ const day: GluegunCommand = {
       const { part1, part2 } = await import(`src/solutions/day${dayNumber}.ts`)
       const input = fs.readFileSync(`src/inputs/day${dayNumber}.txt`, 'utf8')
 
-      if (!part1) {
-        print.error('Day not found')
+      print.success('Part 1: ' + part1(input))
+      part2 && print.success('Part 2: ' + part2(input))
+    } catch (e) {
+      if (e.code === 'ENOENT') {
+        print.error(`Missing puzzle input at src/inputs/day${dayNumber}.txt`)
       } else {
-        print.success('Part 1: ' + part1(input))
-        part2 && print.success('Part 2: ' + part2(input))
+        print.error(`Solutions not found at src/solutions/day${dayNumber}.ts`)
       }
-    } catch {
-      print.error('Day not found')
     }
   },
 }
