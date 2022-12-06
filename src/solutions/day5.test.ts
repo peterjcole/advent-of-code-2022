@@ -18,7 +18,6 @@ describe('day5', () => {
     expect(part1(day5Example)).toBe(expectedPart1Result)
   })
 
-  //TODO: remove skip
   it('works for part 2', () => {
     expect(part2(day5Example)).toBe(expectedPart2Result)
   })
