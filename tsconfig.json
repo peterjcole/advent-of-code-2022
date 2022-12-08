@@ -3,12 +3,7 @@
     "allowSyntheticDefaultImports": false,
     "experimentalDecorators": true,
     "lib": [
-      "es2017",
-      "scripthost",
-      "es2015.promise",
-      "es2015.generator",
-      "es2015.iterable",
-      "dom"
+      "ESNext"
     ],
     "module": "commonjs",
     "moduleResolution": "node",
@@ -19,7 +14,7 @@
     "inlineSourceMap": true,
     "outDir": "build",
     "strict": false,
-    "target": "es5",
+    "target": "ES6",
     "downlevelIteration": true,
     "declaration": true,
     "declarationDir": "build/types"

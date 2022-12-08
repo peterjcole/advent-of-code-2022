@@ -17,6 +17,7 @@ const day: GluegunCommand = {
       print.success('Part 1: ' + part1(input))
       part2 && print.success('Part 2: ' + part2(input))
     } catch (e) {
+      console.log(e)
       if (e.code === 'ENOENT') {
         print.error(`Missing puzzle input at src/inputs/day${dayNumber}.txt`)
       } else {

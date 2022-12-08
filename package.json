@@ -62,5 +62,8 @@
     "hooks": {
       "pre-commit": "pretty-quick --staged"
     }
+  },
+  "volta": {
+    "node": "18.12.1"
   }
 }
