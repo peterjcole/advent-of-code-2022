@@ -29,7 +29,9 @@
   ],
   "license": "MIT",
   "dependencies": {
+    "bignumber.js": "^9.1.1",
     "gluegun": "latest",
+    "jsbn": "^1.1.0",
     "lodash": "^4.17.21"
   },
   "devDependencies": {
@@ -64,6 +66,7 @@
     }
   },
   "volta": {
-    "node": "18.12.1"
+    "node": "18.12.1",
+    "yarn": "1.22.19"
   }
 }
